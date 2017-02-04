@@ -56,7 +56,7 @@ elif [[ ! -z "${OpsMgr_Target}" || ! -z "${OpsMgr_User}" || ! -z "${OpsMgr_Pass}
     success "Prams located from system variables!"
 else
     read -e -p 'Enter Ops Manager target: ' target
-    read -e -p 'Enetr Ops Manager Username: ' user
+    read -e -p 'Enter Ops Manager Username: ' user
     read -s -p 'Enter Password: ' pass
     success "User input of params!"
 fi
