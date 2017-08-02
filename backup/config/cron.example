@@ -1,0 +1,16 @@
+# Example how to trigger backup via CRON
+#
+# ert_bponly - every day 01:00, except Saturday
+#0 1 * * 0-5 backup/backup_ert_bponly.sh >> /var/log/backup_ert_bponly.log 2>&1
+#
+# ert - Saturday 01:00
+#0 1 * * 6 /backup/backup_ert.sh >> /var/log/backup_ert.log 2>&1
+#
+# om - Saturday 02:00
+#0 2 * * 6 /backup/backup_om.sh >> /var/log/backup_om.log 2>&1
+#
+# bosh director - every day 00:30
+#30 0 * * * /backup/backup_bosh.sh >> /var/log/backup_bosh.log 2>&1
+#
+# rabbitmq - every day 00:15
+#15 0 * * * /backup/backup_rmq.sh >> /var/log/backup_rmq.log 2>&1

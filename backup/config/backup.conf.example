@@ -1,0 +1,25 @@
+# hostname of the OpsMan machine (the one used to login)
+export CFOPS_HOST=                      # FQDN or IP of OpsMan (x.x.x.x)
+export OM_HOST=$CFOPS_HOST
+
+# user that is used to SSH into machine usually 'ubuntu'
+export CFOPS_OM_USER=ubuntu             # Linux username for OpsMan
+export CFOPS_OM_PASS=                   # Linux password for OpsMan
+
+# client id and secret used to create backups
+export CFOPS_CLIENT_ID=backup-om        # UAA Clientid for OpsMan backup user (create as per instructions)
+export CFOPS_CLIENT_SECRET=             # Client secret id for OpsMan backup user (create as per instructions)
+
+# admin user/password (soon to be retired according to cfops doc)
+#export CFOPS_ADMIN_USER=
+#export CFOPS_ADMIN_PASS=
+
+# decryption phrase, important when restoring
+#export CFOPS_OM_PASSPHRASE=
+
+export BOSH_TARGET=                     # Bosh Director (https://x.x.x.x:25555)
+export BOSH_CLIENT=backup-bosh          # UAA Clientid for Bosh backup user (create as per instructions)
+export BOSH_CLIENT_SECRET=              # Client secret id for Bosh backup user (create as per instructions)
+export BOSH_CA_CERT=                    # Location of cert (/var/tempest/workspace/default/root_ca_certificate)
+
+export BACKUP_DATA_DIR=                 # Location to store backups

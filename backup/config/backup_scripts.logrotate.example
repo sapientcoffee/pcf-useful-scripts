@@ -1,0 +1,9 @@
+/var/log/backup_*.log {
+    daily
+    missingok
+    rotate 7
+    compress
+    delaycompress
+    notifempty
+    create 0600 root root
+}
