@@ -12,7 +12,7 @@
 # Limitations/issues:
 #==============================================================================
 
-# Set some output colours to feedback during setup
+# Set some output colours for feedback during setup
 info () {
     printf " [ \033[00;34m..\033[0m ] $1\n"
 }
@@ -42,8 +42,8 @@ else
     fail "Could not detect the OM command set, please obtain from https://github.com/pivotal-cf/om/releases"
 fi
 
-
-# Check if parameters have been passed, if not prompt user to input or check if global variables exist $OpsMgr-Target, $OpsMgr-user $OpsMgr-pass
+# Check if required parameters have been passed, if not prompt user to input or check if 
+# global variables exist $OpsMgr-Target, $OpsMgr-user $OpsMgr-pass
 if [[ ! -z "${1}" || ! -z "${2}" || ! -z "${3}" ]]; then
     target=$1
     user=$2
@@ -61,7 +61,7 @@ else
     success "User input of params!"
 fi
 
-# print the tiles that will be installed and confirm with y to proceed
+# print the tiles that will be installed and confirm with a y to proceed
 #find . -name '*.pivotal'
 printf "\n \tTiles found in the directory; \n"
 for f in $(find . -name '*.pivotal'); do 
@@ -73,6 +73,7 @@ printf "\n"
 user "Do you want to proceed and install the listed tiles? (y/n) "
 read -e response
 
+# If user responds with y proceed to upload each tile
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]; then
     for f in $(find . -name '*.pivotal'); do 
         if $execution_cmd -k -t https://$target -u $user -p $pass upload-product -p $f; then
@@ -85,5 +86,6 @@ else
     fail "User cancelled script!!"
 fi
 
+# Finish
 success "Completed Script"
 echo ''
