@@ -2,13 +2,19 @@
 
 set -eu
 
+backup_script_dir=$(dirname $0)
+
+# backup configuration
+source $backup_script_dir/../config/backup.conf
+source $backup_script_dir/functions.sh
+
 #===== To Extract to functions file =====
 #
 # Alias for an authenticated OM. Adds a Authorization details
 # to each call, as well as ignores SSL issues.
 # 
 aom() {
-    om --skip-ssl-validation --target ${OPSMAN_TARGET} --username ${OPSMAN_USERNAME} --password ${OPSMAN_PASSWORD} "$@"
+    om --skip-ssl-validation --target ${CFOPS_HOST} --username ${OPSMAN_USERNAME} --password ${OPSMAN_PASSWORD} "$@"
 }
 
 bbr_ert() {
@@ -30,12 +36,6 @@ bbr_director() {
 }
 
 #source "$(dirname $BASH_SOURCE)"/om-cmd
-
-#===== To extract to credentials file
-OPSMAN_TARGET="opsman.gcp.clijockey.com"
-OPSMAN_USERNAME=admin
-OPSMAN_PASSWORD=admin
-OPSMAN_BACKUP="test-export.zip"
 
 # Check OM and BBR are installed
 

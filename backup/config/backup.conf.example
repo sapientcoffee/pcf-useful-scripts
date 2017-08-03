@@ -13,6 +13,8 @@ export CFOPS_CLIENT_SECRET=             # Client secret id for OpsMan backup use
 # admin user/password (soon to be retired according to cfops doc)
 #export CFOPS_ADMIN_USER=
 #export CFOPS_ADMIN_PASS=
+OPSMAN_USERNAME=
+OPSMAN_PASSWORD=
 
 # decryption phrase, important when restoring
 #export CFOPS_OM_PASSPHRASE=
@@ -23,3 +25,6 @@ export BOSH_CLIENT_SECRET=              # Client secret id for Bosh backup user 
 export BOSH_CA_CERT=                    # Location of cert (/var/tempest/workspace/default/root_ca_certificate)
 
 export BACKUP_DATA_DIR=                 # Location to store backups
+OPSMAN_BACKUP=
+
+
