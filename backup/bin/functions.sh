@@ -193,3 +193,36 @@ cleanup_backup() {
 	find $dir_to_check -type d -mtime +$retention -delete
 	return $?
 }
+
+
+#
+# Alias for an authenticated OM. Adds a Authorization details
+# to each call, as well as ignores SSL issues.
+# 
+aom() {
+    om --skip-ssl-validation --target ${OPSMAN_TARGET} --username ${OPSMAN_USERNAME} --password ${OPSMAN_PASSWORD} "$@"
+}
+
+#
+# Alias for an BBR deployment backups including the auth params
+# 
+bbr_ert() {
+    BOSH_CLIENT_SECRET=${BOSH_CLIENT_SECRET} \
+    bbr deployment \
+    --target ${BOSH_ADDRESS} \
+    --username ${BOSH_CLIENT} \
+    --deployment ${ERT_DEPLOYMENT_NAME} \
+    --ca-cert ${BOSH_CA_CERT_PATH} \
+    "$@"
+}
+
+#
+# Alias for an BBR deployment backups including the auth params
+# 
+bbr_director() {
+    bbr director \
+    --host "${BOSH_ADDRESS}" \
+    --username bbr \
+    --private-key-path <(echo "${BBR_PRIVATE_KEY}") \
+    "$@"
+}
