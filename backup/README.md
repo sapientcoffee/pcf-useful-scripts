@@ -8,6 +8,7 @@ The structure of the backup directory is as follows however this can be adapted 
 .
 ├── README.md
 ├── bin
+│   ├── backup_bbr.sh                 # Backup ERT & Bosh using BBR tool
 │   ├── backup_bosh.sh                # Backs up Bosh configuration
 │   ├── backup_ert.sh                 # Backs up buildpacks, app droplets, source, and app cache
 │   ├── backup_ert_bponly.sh          # Backs up buildpacks only and necessitates re-pushing apps
@@ -35,6 +36,7 @@ The dependencies to run these scripts are;
 * [uaac](https://docs.pivotal.io/pivotalcf/1-10/adminguide/uaa-user-management.html) or [GitHub](https://github.com/cloudfoundry/cf-uaac)
   * This will need the RubyGems site opened up through the proxy (https://rubygems.org/). When I individually downloaded the gems and all their dependencies I got an error messages related to the `ruby-devel` package not being available on the server (the configured repos don't have this package)
 * [Bosh](https://bosh.io/docs/bosh-cli.html)
+* BBR - this is used for the latest version of PCF (v1.11 +). Can be downloaded from network.pivotal.io
 
 
 ## Configure Backup
