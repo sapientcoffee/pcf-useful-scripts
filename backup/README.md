@@ -30,7 +30,7 @@ They are not scheduled and need to be run manually. The location of the scripts 
 
 The reason for having a `backup_ert.sh` and `backup_ert_bponly.sh` is because the Cloud Controller does not allow writes while a backup of Elastic Runtime is being taken. This is to ensure that the system is in a consistent state while being backed up. If you are using the internal NFS server as your blobstore, backing it up can take a long time. If leaving the system in a read-only state is a concern, you can opt to only back up the buildpacks and re-push all of your apps (-nfs bp), or you can skip the application cache (-nfs lite) to reduce the time that the Cloud Controller is in a read-only state.
 
-The dependencies to run these scripts are;
+The dependencies to run all these scripts are;
 
 * [cfops](http://www.cfops.io/)
 * [uaac](https://docs.pivotal.io/pivotalcf/1-10/adminguide/uaa-user-management.html) or [GitHub](https://github.com/cloudfoundry/cf-uaac)
@@ -39,7 +39,9 @@ The dependencies to run these scripts are;
 * BBR - this is used for the latest version of PCF (v1.11 +). Can be downloaded from network.pivotal.io
 
 
-## Configure Backup
+## Configure Backup using CFOPs
+
+The use of the CFOPs is really for PCF v1.10 and below. This tool is superseded by the BBR tool, details of BBR based scripts can be found below.
 
 * Make sure SSH access via password to OpsMan VM is possible for configured user 
 * Configure `config/backup.conf` with properties for you environment
@@ -144,6 +146,12 @@ signup redirect url (url):
 
 ```
 
+## Configure Backup using BBR
+
+BBR is a tool to backup PCF (ERT & BOSH), it is currently in Beta however due to go GA in early August 2017.
+
+* Configure `config/backup.conf` with properties for you environment
+* Download dependencies by running `bin/download_dependencies.sh`
 
 ## MySQL Backup
 

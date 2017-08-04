@@ -200,7 +200,7 @@ cleanup_backup() {
 # to each call, as well as ignores SSL issues.
 # 
 aom() {
-    om --skip-ssl-validation --target ${OPSMAN_TARGET} --username ${OPSMAN_USERNAME} --password ${OPSMAN_PASSWORD} "$@"
+    om --skip-ssl-validation --target ${CFOPS_HOST} --username ${OPSMAN_USERNAME} --password ${OPSMAN_PASSWORD} "$@"
 }
 
 #
