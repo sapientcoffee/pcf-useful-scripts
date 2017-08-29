@@ -1,0 +1,7 @@
+OPSMAN_USERNAME=admin
+OPSMAN_PASSWORD=letmein
+CF_USERNAME=admin
+CF_PASSWORD="pasowrd"
+OPSMAN_TARGET=opsman.<domain>
+CF_API_TARGET=api.sys.<domain>
+WORKING_DIR="/tmp/migration"
