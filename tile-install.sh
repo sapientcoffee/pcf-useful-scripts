@@ -32,12 +32,12 @@ fail () {
 }
 
 # Check if OM is present on the system
-if type om-linux >/dev/null 2>&1 ; then
+if type om >/dev/null 2>&1 ; then
     success "Discovered OM command set globally!"
-    execution_cmd=om-linux
-elif type ./om-linux >/dev/null 2>&1 ; then
+    execution_cmd=om
+elif type ./om >/dev/null 2>&1 ; then
     success "Discovered OM command set in local directory!"
-    execution_cmd=./om-linux
+    execution_cmd=./om
 else 
     fail "Could not detect the OM command set, please obtain from https://github.com/pivotal-cf/om/releases"
 fi
