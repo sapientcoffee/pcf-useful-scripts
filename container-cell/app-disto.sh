@@ -71,4 +71,19 @@ main() {
     done
 }
 
+check_dependancies() {
+    if [[ "$(which jq)X" == "X" ]]
+    then
+        echo "Please install jq"
+        exit 1
+    fi
+   
+    if [[ "$(which cf)X" == "X" ]]
+    then
+        echo "Please install cf"
+        exit 1
+    fi
+    
+}
+
 main "$@"
