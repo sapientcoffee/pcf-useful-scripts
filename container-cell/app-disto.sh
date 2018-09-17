@@ -36,19 +36,23 @@ fail () {
     echo ''
     exit
 }
+error_exit() {
+	echo "${1:-"Unknown Error"}" 1>&2
+	exit 1
+}
 
 bold=$(tput bold)
 normal=$(tput sgr0)
 
 main() {
-    
+    check_dependancies
     # Work out the current org and space logged into
-    org=$(jq -r -c ".OrganizationFields.Name" ~/.cf/config.json)
-    space=$(jq -r -c ".SpaceFields.Name" ~/.cf/config.json)
+    org=$(jq -r -c ".OrganizationFields.Name" ~/.cf/config.json || error_exit "Looks like you might not be logged into the CF CLI")
+    space=$(jq -r -c ".SpaceFields.Name" ~/.cf/config.json || error_exit "Looks like you might not be logged into the CF CLI")
     
     echo "Parsing to understand which Diego cell the application insatnces are running on in the org ${org} and space ${space};"
 
-    space_guid=$(cf space ${space} --guid)
+    space_guid=$(cf space ${space} --guid || error_exit "Looks like you might not be logged into the CF CLI")
 
     app_guids=$(cf curl /v2/spaces/${space_guid}/apps | jq -r -c '.resources[].metadata.guid')
     for app_guid in ${app_guids} 
